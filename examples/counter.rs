@@ -61,6 +61,7 @@ async fn main() -> eyre::Result<()> {
     let pending = counter.increment();
     if let Some(receipt) = pending.send().await?.await? {
         println!("Receipt = {:?}", receipt);
+        println!("Gas used = {:?}", receipt.gas_used.unwrap());
     }
     println!("Successfully incremented counter via a tx");
 
